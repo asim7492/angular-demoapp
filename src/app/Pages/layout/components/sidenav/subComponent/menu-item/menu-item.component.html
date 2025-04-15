@@ -1,0 +1,49 @@
+<a mat-list-item  
+  [routerLink]="itemValue().route"
+  
+  (click)="toggleNested()"
+  routerLinkActive="selected-menu-item" #rla="routerLinkActive"
+  >
+
+  <mat-icon 
+    [fontSet]="rla.isActive ? 'material-icons' : 'material-icons-outlined'" 
+    matListIcon 
+    matListItemIcon>
+    {{ itemValue().icon }}
+  </mat-icon>
+
+  <span matListItemTitle *ngIf="!collapsed()">{{ itemValue().label }}</span>
+  @if (item().subItem) {
+    <span matListItemMeta>
+      @if (nestedMenuOpen()) {
+        <mat-icon>expand_less</mat-icon>
+      } @else {
+        <mat-icon>expand_more</mat-icon>
+      }
+      
+    </span>
+  }
+</a>
+@if (item().subItem && nestedMenuOpen()) {
+  <div >
+    @for (subItem of item().subItem; track subItem.label) {
+      <a mat-list-item 
+      [class.indented]="!collapsed()"
+  
+      [routerLink]="item().route+ '/' +subItem.route"
+      >
+
+  <mat-icon 
+    [fontSet]="rla.isActive ? 'material-icons' : 'material-icons-outlined'" 
+    matListIcon 
+    matListItemIcon>
+    {{ subItem.icon }}
+  </mat-icon>
+
+  <span matListItemTitle *ngIf="!collapsed()">{{ subItem.label }}</span>
+ 
+  
+</a>
+    }
+  </div>
+}

@@ -1,0 +1,25 @@
+<mat-toolbar class="mat-elevation-z3 ">
+    <button mat-icon-button (click)="collapsed.set(!collapsed())">
+        <mat-icon>menu</mat-icon>
+    </button><h1 class="header">AsimDemo</h1>
+
+    <span class="spacer"></span>
+
+    <button mat-icon-button [matBadge]="5" matBadgeColor="warn" aria-label="Notifications">
+        <mat-icon >notifications</mat-icon>
+    </button>
+
+    <button mat-icon-button [matBadge]="10" matBadgeColor="primary" aria-label="Comments">
+        <mat-icon>comment</mat-icon>
+    </button>
+</mat-toolbar>
+<mat-sidenav-container >
+    
+    <mat-sidenav  mode="side" opened [style.width]="sidenavWidth()" class="sidenavcolor">
+        <app-sidenav ></app-sidenav>
+    </mat-sidenav>
+    <mat-sidenav-content [style.margin-left]="sidenavWidth()">
+        
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

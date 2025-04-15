@@ -1,0 +1,8 @@
+<div>
+    <mat-nav-list >
+      @for (item of MenuItem(); track item.label) {
+        <app-menu-item [item]="item"></app-menu-item>
+      }
+    </mat-nav-list>
+  </div>
+  

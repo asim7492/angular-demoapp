@@ -1,0 +1,6 @@
+<mat-toolbar>Home</mat-toolbar>
+<mat-tab-group [(selectedIndex)]="selectedTabIndex" (selectedIndexChange)="onTabChange($event)">
+    <mat-tab label="Home1"></mat-tab>
+    <mat-tab label="Home2"></mat-tab>
+</mat-tab-group>
+<router-outlet></router-outlet>
